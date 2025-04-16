@@ -51,6 +51,6 @@ matplotlib
 - Feature standardisation was applied using Z-score normalisation.
 - Burglary data are based on interpolated values (IDW) at 200 m resolution.
 
-## sReferences
+## References
 
 Relevant academic sources and theoretical frameworks can be found in the `references/` folder.
