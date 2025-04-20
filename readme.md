@@ -1,33 +1,41 @@
 # CASA0006 Assessment – Burglary Risk Modelling in London
 
-This repository contains the coursework materials and analysis for the CASA0006 module at UCL. The project investigates the spatial patterns of burglary risk in Greater London using point-of-interest (POI) data and machine learning techniques.
+This repository contains coursework materials and analysis for the CASA0006 module at UCL. The project investigates spatial burglary risk across Greater London using point-of-interest (POI) data and interpretable machine learning techniques.
 
 ## Repository Structure
 
 ```
 .
-├── data/                     # Processed and raw spatial data (e.g., grid, POIs)
-├── cache/                   # Intermediate or temporary outputs
-├── guide/                   # Guidance documents for analysis or replication
-├── proposal/                # Project proposal and outline
-├── references/              # Key academic sources or citation files
-├── Template_submission_CASA0006.ipynb  # Main Jupyter Notebook (analysis & results)
-├── assessment.ipynb         # Supplementary notebook (if applicable)
+├── data/                     # Raw and processed spatial data (e.g. POIs, grids, burglary rates)
+├── cache/                   # Temporary or intermediate outputs (e.g. model artefacts)
+├── flowchart/               # Visual workflows and diagrams
+├── guide/                   # Supporting guides and reproducibility notes
+├── proposal/                # Research proposal and project outline
+├── references/              # Academic sources and citation files
+├── Template_submission_CASA0006.ipynb  # Final submission notebook (analysis + visualisation)
+├── readme.md                # This file
 ```
 
 ## Project Overview
 
-- **Objective**: To explore spatial correlates of burglary risk across London and evaluate the predictive power of different urban POIs using geospatial machine learning.
-- **Methods**:
-  - Data collection from OpenStreetMap (via OSMnx)
-  - Grid-based spatial aggregation
-  - Feature engineering from POIs
-  - Burglary density normalisation
-  - Model training using XGBoost and interpretation using SHAP
+- **Objective**: To explore spatial correlates of burglary hotspots in London and identify key urban features contributing to elevated risk.
+- **Key Questions**:
+  - Which types of POIs are most associated with burglary risk?
+  - How can interpretable machine learning reveal spatial drivers of crime?
+
+## Methodology Summary
+
+- POI collection via [OSMnx](https://github.com/gboeing/osmnx) from OpenStreetMap
+- Feature engineering on selected POIs (shops, pubs, restaurants, etc.)
+- Grid-based spatial aggregation (200 m × 200 m cells)
+- Burglary rate interpolation using Inverse Distance Weighting (IDW)
+- Modelling using XGBoost regression
+- Model interpretation via SHAP values
+- Spatial analysis using Kernel Density Estimation and residual mapping
 
 ## Requirements
 
-The following Python libraries are required (install via pip or conda):
+Install required libraries via pip or conda:
 
 ```bash
 geopandas
@@ -40,17 +48,21 @@ matplotlib
 
 ## How to Reproduce
 
-1. Clone this repository.
-2. Run the Jupyter Notebook `Template_submission_CASA0006.ipynb` step by step.
-3. Ensure the correct data files are available in the `data/` directory.
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/your-username/CASA0006_assessment.git
+   ```
+2. Ensure all data files are placed in the `data/` directory.
+3. Open and run `Template_submission_CASA0006.ipynb` in Jupyter Lab or VSCode with Python kernel.
+4. Use “Restart & Run All” to reproduce all results and figures.
 
 ## Notes
 
-- All spatial layers use the British National Grid (EPSG:27700).
-- POIs were selected based on criminological theories (e.g., routine activity theory).
-- Feature standardisation was applied using Z-score normalisation.
-- Burglary data are based on interpolated values (IDW) at 200 m resolution.
+- All spatial layers are projected to EPSG:27700 (British National Grid).
+- POIs were selected based on theories of crime attractors and generators (e.g. Brantingham & Brantingham, 1995).
+- SHAP results highlighted commercial POIs and proximity to existing hotspots as strong predictors.
+- Final runtime: 0.04 hours depending on system performance.
 
 ## References
 
-Relevant academic sources and theoretical frameworks can be found in the `references/` folder.
+Relevant academic literature and theory references are included in the `references/` folder and cited within the notebook.
